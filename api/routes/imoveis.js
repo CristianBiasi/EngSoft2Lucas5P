@@ -1,15 +1,10 @@
-import express from "express";
-import { addImovel, deleteImovel, getImoveis, updateImovel } from "../controllers/imovel.js";
+const express = require("express");
+const { addImovel, deleteImovel, getImoveis, updateImovel } = require("../controllers/imovel");
 
+const router = express.Router();
+router.get("/", getImoveis);
+router.post("/", addImovel);
+router.put("/:id", updateImovel);
+router.delete("/:id", deleteImovel);
 
-const router = express.Router()
-
-router.get("/", getImoveis)
-
-router.post("/", addImovel)
-
-router.put("/:id", updateImovel)
-
-router.delete("/:id", deleteImovel)
-
-export default router
+module.exports = router;

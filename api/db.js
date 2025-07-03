@@ -1,11 +1,11 @@
-import mysql from "mysql"
+const mysql = require("mysql");
 
-export const db = mysql.createConnection({
+const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "root",
-    database: "imobiliaria2",
-    port: 3307
+    database: "imobiliaria",
+    port: 3306
 })
 
 db.connect((err) => {
@@ -15,3 +15,4 @@ db.connect((err) => {
     console.log("Conexão com o banco de dados MySQL estabelecida com sucesso ✅");
   }
 });
+module.exports = { db };

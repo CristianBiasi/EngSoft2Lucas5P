@@ -1,18 +1,18 @@
 const mysql = require("mysql");
 
-describe("Testar conexão com o banco de dados", () => {
-  it("Deve conectar ao banco de dados com sucesso", (done) => {
-    const connection = mysql.createConnection({
+describe("Teste de conexão com o banco de dados", () => {
+  it("Deve conectar com sucesso ao banco", (done) => {
+    const db = mysql.createConnection({
       host: "localhost",
       user: "root",
       password: "root",
-      database: "imobiliaria2",
-      port: 3307,
+      database: "imobiliaria",
+      port: 3306
     });
 
-    connection.connect((err) => {
+    db.connect((err) => {
       expect(err).toBeNull();
-      connection.end();
+      db.end();
       done();
     });
   });

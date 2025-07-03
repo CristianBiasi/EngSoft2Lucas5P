@@ -1,6 +1,6 @@
-import { db } from "../db.js";
+const { db } = require("../db.js");
 
-export const getImoveis = (_, res) => {
+const getImoveis = (_, res) => {
   const q = "SELECT * FROM imovel";
 
   db.query(q, (err, data) => {
@@ -10,7 +10,7 @@ export const getImoveis = (_, res) => {
   });
 };
 
-export const addImovel = (req, res) => {
+const addImovel = (req, res) => {
   const q =
     "INSERT INTO imovel(`fone`, `preco`, `endereco`, `corretora`) VALUES(?)";
 
@@ -24,11 +24,11 @@ export const addImovel = (req, res) => {
   db.query(q, [values], (err) => {
     if (err) return res.json(err);
 
-    return res.status(200).json("Imovel criado com sucesso.");
+    return res.status(200).json("Imovel criado com sucesso.");return res.status(200).json({ message: "Imovel criado com sucesso." });
   });
 };
 
-export const updateImovel = (req, res) => {
+const updateImovel = (req, res) => {
   const q =
     "UPDATE imovel SET `fone` = ?, `preco` = ?, `endereco` = ?, `corretora` = ? WHERE `id` = ?";
 
@@ -46,7 +46,7 @@ export const updateImovel = (req, res) => {
   });
 };
 
-export const deleteImovel = (req, res) => {
+const deleteImovel = (req, res) => {
   const q = "DELETE FROM imovel WHERE `id` = ?";
 
   db.query(q, [req.params.id], (err) => {
@@ -54,4 +54,11 @@ export const deleteImovel = (req, res) => {
 
     return res.status(200).json("Imovel deletado com sucesso.");
   });
+};
+
+module.exports = {
+  getImoveis,
+  addImovel,
+  updateImovel,
+  deleteImovel
 };
