@@ -7,13 +7,18 @@ describe("Teste de conexão com o banco de dados", () => {
       user: "root",
       password: "root",
       database: "imobiliaria",
-      port: 3306
+      port: 3306,
     });
 
     db.connect((err) => {
-      expect(err).toBeNull();
-      db.end();
-      done();
+      try {
+        expect(err).toBeNull();
+        done();
+      } catch (e) {
+        done(e);
+      } finally {
+        db.end(); // sempre fecha, com ou sem erro
+      }
     });
   });
 });
