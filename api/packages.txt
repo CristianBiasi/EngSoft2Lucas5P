@@ -1,2 +1,3 @@
 npm init -y
-npm install express cors mysql jest supertest
+npm install express cors mysql
+npm install --save-dev jest
