@@ -1,4 +1,4 @@
-import mysql from "mysql";
+const mysql = require("mysql");
 
 describe("Testar conexão com o banco de dados", () => {
   it("Deve conectar ao banco de dados com sucesso", (done) => {

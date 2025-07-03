@@ -1,6 +1,6 @@
-import request from "supertest";
-import express from "express";
-import imovelRoutes from "../routes/imoveis.js";
+const request = require("supertest");
+const express = require("express");
+const imovelRoutes = require("../routes/imoveis");
 
 const app = express();
 app.use(express.json());
@@ -20,6 +20,6 @@ describe("POST /imoveis", () => {
       .send(newImovel);
 
     expect(res.statusCode).toBe(200);
-    expect(res.body).toContain("Imovel criado com sucesso");
+    expect(res.body.message).toContain("Imovel criado com sucesso");
   });
 });
