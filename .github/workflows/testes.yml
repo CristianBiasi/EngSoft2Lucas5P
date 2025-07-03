@@ -21,9 +21,11 @@ jobs:
 
       - name: 📦 Instalando dependências
         run: npm install
+        working-directory: ./api  # Especifica o diretório correto para o npm
 
       - name: 🧪 Rodando testes com cobertura
         run: npm test
+        working-directory: ./api  # Especifica o diretório correto para rodar os testes
 
       - name: ☁️ Enviando cobertura para Codecov
         uses: codecov/codecov-action@v5
